@@ -63,7 +63,8 @@ message Operation {
   repeated string consumes = 6;
   repeated string produces = 7;
   // field 8 is reserved for 'parameters'.
-  reserved 8;
+  repeated Parameter parameters = 8;
+  //reserved 8;
   map<string, Response> responses = 9;
   repeated string schemes = 10;
   bool deprecated = 11;
@@ -376,4 +377,16 @@ message Scopes {
   // Maps between a name of a scope to a short description of it (as the value
   // of the property).
   map<string, string> scope = 1;
+}
+
+message Parameter {
+  string in = 1;
+  string name = 2;
+  string description = 3;
+  bool required = 4;
+  Schema schema = 5;
+  string style = 6;
+  bool explode = 7;
+  // content
+  reserved 8; 
 }
